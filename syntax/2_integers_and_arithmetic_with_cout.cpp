@@ -4,7 +4,6 @@
  *
  */
 #include <iostream>
-#include <ostream>
 
 int main(void) {
     // You can also use another << operator and place the \n character after the text, like this:

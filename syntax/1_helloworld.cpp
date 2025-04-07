@@ -29,3 +29,8 @@ In file included from helloworld.cpp:2:
 /usr/include/c++/11/iostream:61:18: note: ‘std::cout’ declared here
    61 |   extern ostream cout;          /// Linked to standard output
       |                  ^~~~ */
+
+/* Note
+* https://stackoverflow.com/questions/70375007/what-is-using-namespacestd-in-c
+* https://stackoverflow.com/questions/1452721/whats-the-problem-with-using-namespace-std
+*/
