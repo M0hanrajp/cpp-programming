@@ -6,7 +6,6 @@
 */
 
 #include <iostream>
-#include <ostream>
 class calculatorDemo { // class
     public: // access specifier
         int operandA; // attributes
@@ -26,6 +25,12 @@ class calculatorDemo { // class
         };
 };
 
+class calculatorDemo_da {
+    public:
+        int someth;
+        int ada;
+};
+
 class calculatorDemo_modulo {
     public:
         int operandA;
@@ -34,7 +39,6 @@ class calculatorDemo_modulo {
         calculatorDemo_modulo(int *a, int *b);
 };
 
-// constructor defined outside of class
 calculatorDemo_modulo::calculatorDemo_modulo(int *a, int *b) {
     operandA = *a;
     operandB = *b;

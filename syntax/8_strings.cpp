@@ -1,6 +1,4 @@
-#include <cstdio>
 #include <iostream>
-#include <ostream>
 #include <string>
 
 int main(void) {
@@ -49,6 +47,7 @@ int main(void) {
 /* Note
 * why std::string can be used without "string" header file
 * Some libc++ or libstdc++ implementations (like GCC, Clang) might include <string> internally from <iostream> or other headers.
+* VIMP: It's always good practice to include the <string> to perform string operations.
 * https://stackoverflow.com/questions/33349833/can-stdstring-be-used-without-include-string/33349897
 * C style strings and C++ style strings
 * https://stackoverflow.com/questions/3454900/whats-the-difference-between-c-strings-and-c-strings
