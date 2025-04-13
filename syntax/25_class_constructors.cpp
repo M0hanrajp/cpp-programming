@@ -25,12 +25,6 @@ class calculatorDemo { // class
         };
 };
 
-class calculatorDemo_da {
-    public:
-        int someth;
-        int ada;
-};
-
 class calculatorDemo_modulo {
     public:
         int operandA;
