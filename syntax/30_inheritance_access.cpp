@@ -8,6 +8,7 @@ class fOneRace {
         bool boxbox = false;
 };
 
+// operatorBono is derived from fOneRace
 class operatorBono: public fOneRace {
     public:
         bool p2InRace(bool driverAnswer) {
