@@ -24,3 +24,6 @@ int main(void) {
 
     return 0;
 }
+
+/* public - accessible code to the user
+ * private - black box (abstract away/hide away the details of the code from the user */
