@@ -14,6 +14,11 @@ int main(void) {
             "I'm learning cpp\n";
     // end
     return 0;
+    /* Output if errors are fixed
+        Hello, World!
+        Hello, World!
+        Hello, I'm learning cpp
+    */
 }
 
 // blank line. C++ ignores white space. But we use it to make the code more readable.

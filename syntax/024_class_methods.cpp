@@ -3,6 +3,7 @@
 * There are two ways to define functions that belongs to a class:
 * Inside class definition
 * Outside class definition
+* the methods inside the class are by default as inline so they are efficient
 */
 
 #include <iostream>
