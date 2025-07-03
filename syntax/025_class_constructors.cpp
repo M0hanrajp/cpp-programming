@@ -13,9 +13,10 @@
 */
 
 #include <iostream>
+#include <ostream>
 class calculatorDemo { // class
     public: // access specifier
-        int operandA; // attributes (these are not necessary)
+        int operandA; // attributes
         int operandB;
         int addition;
         int substraction;
@@ -23,8 +24,15 @@ class calculatorDemo { // class
         int divison;
         // constructor method
         calculatorDemo(int *a, int *b) { // constructor defined inside class
-            //operandA = *a; this is not necessary
+            //operandA = *a;
             //operandB = *b;
+            addition = *a + *b;
+            substraction = *a - *b;
+            multiplication = *a * *b;
+            divison = *a / *b;
+        };
+        // constructor overload
+        calculatorDemo(double *a, double *b) {
             addition = *a + *b;
             substraction = *a - *b;
             multiplication = *a * *b;
@@ -48,12 +56,20 @@ calculatorDemo_modulo::calculatorDemo_modulo(int *a, int *b) {
 
 int main(void) {
     int a = 8, b = 8;
-    calculatorDemo operations(&a, &b);
+    calculatorDemo intOperations(&a, &b);
     calculatorDemo_modulo modulo(&a, &b);
-    std::cout << "Addition : " << operations.addition << std::endl;
-    std::cout << "Substraction : " << operations.substraction << std::endl;
-    std::cout << "Multiplication : " << operations.multiplication << std::endl;
-    std::cout << "Division : " << operations.divison << std::endl;
+    std::cout << "Using int data types" << std::endl;
+    std::cout << "Addition : " << intOperations.addition << std::endl;
+    std::cout << "Substraction : " << intOperations.substraction << std::endl;
+    std::cout << "Multiplication : " << intOperations.multiplication << std::endl;
+    std::cout << "Division : " << intOperations.divison << std::endl;
     std::cout << "Modulo : " << modulo.modulo << std::endl;
+    double aa = 4.7, bb = 7.2;
+    calculatorDemo doubleOperations(&aa, &bb);
+    std::cout << "Using double data types, only int is reflected in io as class members are int" << std::endl;
+    std::cout << "Addition : " << doubleOperations.addition << std::endl;
+    std::cout << "Substraction : " << doubleOperations.substraction << std::endl;
+    std::cout << "Multiplication : " << doubleOperations.multiplication << std::endl;
+    std::cout << "Division : " << doubleOperations.divison << std::endl;
     return 0;
 }
