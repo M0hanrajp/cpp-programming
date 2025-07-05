@@ -46,6 +46,10 @@ class Account {
         friend class BankManager;
 };
 
+// This access through inheritance can alter the access modifier of the elements of base 
+// class in derived class depending on the mode of Inheritance. (028-cpp)
+// this is a derived class
+// class derived : class base
 class SavingsAccount : public Account {
     private:
         double interestRate;

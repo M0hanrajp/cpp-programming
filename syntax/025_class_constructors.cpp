@@ -48,6 +48,7 @@ class calculatorDemo_modulo {
         calculatorDemo_modulo(int *a, int *b);
 };
 
+// constructor defined outside of it's class's definition
 calculatorDemo_modulo::calculatorDemo_modulo(int *a, int *b) {
     operandA = *a;
     operandB = *b;
