@@ -1,3 +1,9 @@
+// https://www.geeksforgeeks.org/cpp/inheritance-in-c/
+// Single inheritance
+// Multilevel inheritance
+// Multiple inheritance
+// Hierarchical inheritance
+// Hybrid inheritance
 #include <iostream>
 
 using namespace std;
@@ -18,7 +24,8 @@ class MyOtherClass {
     }
 };
 
-// Derived class
+// Multiple inheritance
+// Derived class from 2 different base classes MyClass and MyOtherClass
 class MyChildClass: public MyClass, public MyOtherClass {
 };
 

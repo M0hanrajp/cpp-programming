@@ -33,8 +33,8 @@ class CoordinatePoints {
         // subtraction
         CoordinatePoints operator-(CoordinatePoints &obj) {
             CoordinatePoints res;
-            res.pointX = pointX - obj.pointX;
-            res.pointY = pointY - obj.pointY;
+            res.pointX = pointX - obj.pointX; // a.pointX + b.pointY
+            res.pointY = pointY - obj.pointY; // a.pointY + b.pointY
             return res;
         }
 
