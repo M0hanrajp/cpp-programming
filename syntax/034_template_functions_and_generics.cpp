@@ -6,6 +6,8 @@ template<class subElements>
  * no need to duplicate code,
  * https://en.cppreference.com/w/cpp/language/templates.html
  * https://www.geeksforgeeks.org/cpp/templates-cpp/
+ * So, template<class subElements> is introducing a type variable called subElements, 
+ * not an actual class or object, but a type placeholder.
  */
 inline subElements subtract(const subElements data[], subElements size, subElements result = 0) {
     /* This function uses a default parameters initialized to 0
