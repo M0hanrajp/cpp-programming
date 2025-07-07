@@ -22,6 +22,11 @@ class Device {
         virtual void off() = 0;
         virtual string status() const = 0;
         virtual ~Device() = default;
+        /* Gives you a concrete (non‑abstract) destructor implementation, equivalent to writing an empty {} body.
+         * virtual ~Device() = 0;
+         * Makes the destructor itself one of the pure‑virtual members, ensuring the class is abstract even if 
+         * you removed all other = 0 functions. Still requires you to provide a definition out‑of‑line, e.g. Device::~Device() {}.
+         */
 };
 
 /* Polymorphism: Polymorphism, in general, refers to the ability of something to
@@ -91,3 +96,19 @@ int main(void) {
     }
     return 0;
 }
+
+/* about the default operator:
+ * https://www.geeksforgeeks.org/cpp/explicitly-defaulted-deleted-functions-c-11/#:~:text=What%20are%20the%20advantages%20of%20%27%3Ddefault%27%20when%20we%20could%20simply%20leave%20an%20empty%20body%20of%20the%20function%20using%20%27%7B%7D%27%3F%C2%A0
+ * https://www.geeksforgeeks.org/cpp/explicitly-defaulted-deleted-functions-c-11/ (default and delete)
+
+  Instead of mentioning an empty body like, virtual void foo(params) {}, we declare it as virtual void foo(params) = default;
+
+    In C++ the = default; specifier can only be used on special member functions (and even then under certain conditions).
+
+    Only special member functions can be explicitly defaulted. A “special member function” is one of these five:
+    default constructor
+    destructor
+    copy constructor
+    move constructor
+    copy‑ or move‑assignment operator
+*/
