@@ -44,10 +44,22 @@ public:
     // Even when it’s implicitly declared, the default constructor might be defined as deleted if it can’t initialize something:
 };
 
+class DerviedNOTOK_OK : public BaseNOTOK {
+public:
+    int z = 1;
+    /* Inherit all the constructor from BaseNOTOK
+     * Please import (i.e. ‘inherit’) all of Base’s constructors into Derived.
+     * using Base::Base;, you get exactly the same constructors that Base has, except they now construct a Derived object:
+     * After the using‑declaration, Derived also has a constructor with signature Derived(int).
+     */
+    using BaseNOTOK::BaseNOTOK;
+};
+
 int main() {
     DerivedOK ok;  // OK: calls BaseOK() then DerivedOK()
     cout << "ok.x = " << ok.x << ", ok.y = " << ok.y << endl;
 
     // DerivedNOTOK notOK;   // error: use of deleted function 'DerivedNOTOK::DerivedNOTOK()'
+    DerviedNOTOK_OK dok(3);  // no errors, but can't do dok; (this again looks for default no-arg constructor
     return 0;
 }
