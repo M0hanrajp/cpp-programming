@@ -15,13 +15,15 @@ int main(void) {
         public:                     // access specifier which specifies that members (attributes and methods) of the class are accessible from outside the class.
             int myNum;              // attribute (variable int)
             std::string myString;   // attribute (variable string)
+            int inititalizedNum = 8; // Initialized int
     };
 
     myCustom myObject; // multiple objects can be created with the class
     myObject.myNum = 8;
     myObject.myString = "Learning oop";
-    std::cout << myObject.myNum << " & " << myObject.myString << '\n';
-
+    std::cout << myObject.myNum << " & " 
+              << myObject.myString << " & "
+              << myObject.inititalizedNum << std::endl;
     return 0;
 }
 

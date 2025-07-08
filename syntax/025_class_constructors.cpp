@@ -23,6 +23,7 @@ class calculatorDemo { // class
         int multiplication;
         int divison;
         // constructor method
+        // they can be overloaded with multiple arguments
         calculatorDemo(int *a, int *b) { // constructor defined inside class
             //operandA = *a;
             //operandB = *b;
@@ -38,6 +39,16 @@ class calculatorDemo { // class
             multiplication = *a * *b;
             divison = *a / *b;
         };
+        /* Destructor
+         * A destructor function is called automatically when the object goes out of scope or is deleted.
+         * Destructor is called when the function ends.
+         * Destructor is called when the program ends.
+         * Destructor is called when a block containing local variables ends.
+         * Destructor is called when a delete operator is called.
+         */
+        ~calculatorDemo(void) {
+            std::cout << "Destructor calculatorDemo invoked" << std::endl;
+        }
 };
 
 class calculatorDemo_modulo {

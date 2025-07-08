@@ -59,3 +59,9 @@ struct A {
 - The C++ standard explicitly includes “empty declaration” as one of the forms a declaration can take (it’s literally just a ; with 
   no declarators). Inside a class you can mix access-specifiers, member data, member functions, typedefs, nested types… 
   and—even—empty declarations. [stack-overflow](https://stackoverflow.com/questions/33722551/purpose-of-allowing-unnecessary-semicolons-in-class-definition/33722778), [cppreference](https://en.cppreference.com/w/cpp/language/declarations.html?utm_source=chatgpt.com)
+
+### error: use of deleted function 'DerivedNOTOK::DerivedNOTOK()
+
+```bash
+Always initialize default constructor for Dervied class 031_inheritance_constructor_implicit_error.cpp
+```
