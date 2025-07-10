@@ -9,6 +9,7 @@
  * a member function that helps in adding two class objects.
  */
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 class CoordinatePoints {
@@ -50,6 +51,54 @@ class CoordinatePoints {
         }
 };
 
+class StringConcatenation {
+    public:
+        char *str = new char[1]{0};
+        StringConcatenation() = default;
+        /* needed for declaring each object, like className obj
+         * Without the below we cannot declare className obj, because it will
+         * clash with className(const char *s) constructor
+         */
+
+        StringConcatenation(const char *s) {
+            /* will allow direct assignment of string 
+             * like className b = "String", This is copy‐initialization at the point of declaration.
+             * The compiler sees you have a literal ("SSS") and wants a StringConcatenation.
+             * It finds your non‐explicit converting constructor and uses it.
+             * And, className("SSSS") is This is called direct initialization. The compiler sees that 
+             * you’re constructing a StringConcatenation from a const char* and picks 
+             * your StringConcatenation(const char*) constructor.
+             * */
+            str = new char[std::strlen(s) + 1]{0};
+            std::strcpy(str, s);
+        }
+
+        StringConcatenation operator=(StringConcatenation inputString) {
+            /* to be used when className b; b = "string" is used 
+             * Use your converting constructor on the right‑hand side to make a temporary StringConcatenation("SSS").
+             * Call your operator=(const StringConcatenation&), which safely frees b.str, 
+             * allocates a new buffer, copies "SSS" into it, prints the message, and returns b.*/
+            delete[] str;
+            str = new char[std::strlen(inputString.str) + 1]{0};
+            std::strcpy(str, inputString.str);
+            std::cout << "Assigned string :: " << str << std::endl;
+            return *this;
+        }
+};
+
+/* the below function is declared as free function,
+ * This will allow us to take two parameters for operator+
+ * use "foo" + b(object) 
+ */
+StringConcatenation operator+(StringConcatenation &lhs, StringConcatenation &rhs) {
+    StringConcatenation res;
+    delete[] res.str;
+    res.str = new char[strlen(lhs.str) + strlen(rhs.str) + 1]{0};
+    strcpy(res.str, lhs.str);
+    strcat(res.str, rhs.str);
+    return res;
+}
+
 int main(void) {
 
     // declare two points on the plane
@@ -71,6 +120,14 @@ int main(void) {
      * It returns a brand‐new CoordinatePoints by value.
      */
 
+    StringConcatenation source = "Hello";
+    StringConcatenation target = ", World!";
+    StringConcatenation concat = source + target;
+    cout << concat.str << endl;
+    string tmp = concat.str;
+    for(char elements : tmp) {
+        cout << elements;
+    }   cout << endl;
     return 0;
 }
 
@@ -91,6 +148,11 @@ int main(void) {
  * if, Member functions: if a’s type has a member, T T::operator+(U) const; that’s a candidate (read as a.operator+(b)).
  * if Non‑member functions: it also looks for free functions in the enclosing namespace(s), including via 
  * Argument‑Dependent Lookup (Koenig lookup), of the form: T operator+(T, U); or U operator+(U, T);
+ * 
+ * Inside the class definition, there cannot be a definition like, className operator+(className a, className b)
+ * Because + expects two operands, and className itself is the implicit left hand operator
+ * If we want full symmetry, (using two parameters then)  it must be a static member or a free (friend) function.
+ *
 * 
 * Now the compiler has a set of viable candidates: some built‑ins, some member, some non‑member.
 * It ranks them by how well their parameter types match the actual operand types (exact match beats conversion, 

@@ -65,3 +65,35 @@ struct A {
 ```bash
 Always initialize default constructor for Dervied class 031_inheritance_constructor_implicit_error.cpp
 ```
+
+### cpp style string, allowed not allowed.
+
+| Scenario                                         | Allowed? | Notes                                                                           |
+| ------------------------------------------------ | :------: | ------------------------------------------------------------------------------- |
+| **Initialization from string literal**           |          |                                                                                 |
+| `std::string s = "hello";`                       |     ✅    | Copy‑initialization; calls `std::string(const char*)`.                          |
+| `std::string s("hello");`                        |     ✅    | Direct initialization; same constructor.                                        |
+| **Assignment from string literal**               |          |                                                                                 |
+| `std::string s; s = "hello";`                    |     ✅    | Calls `std::string& operator=(const char*)`.                                    |
+| **Initialization from another `std::string`**    |          |                                                                                 |
+| `std::string s2 = s1;`                           |     ✅    | Copy‑initialization; calls copy constructor.                                    |
+| `std::string s2(s1);`                            |     ✅    | Direct initialization; same copy constructor.                                   |
+| **Assignment from another `std::string`**        |          |                                                                                 |
+| `std::string s1, s2; s2 = s1;`                   |     ✅    | Calls copy‑assignment operator.                                                 |
+| **Moves**                                        |          |                                                                                 |
+| `std::string s2 = std::move(s1);`                |     ✅    | Directly calls move constructor (leaves `s1` in a valid but unspecified state). |
+| `s2 = std::move(s1);`                            |     ✅    | Calls move‑assignment operator.                                                 |
+| **Construction from `std::string_view`** (C++17) |          |                                                                                 |
+| `std::string s = std::string_view("abc");`       |     ✅    | Calls `std::string(const std::string_view&)`.                                   |
+| **Assignment from `std::string_view`** (C++23)   |          |                                                                                 |
+| `s = std::string_view("xyz");`                   |     ✅    | Calls `operator=(std::string_view)`.                                            |
+| **Conversion to C‑string**                       |          |                                                                                 |
+| `const char* p = s;`                             |     ❌    | No implicit conversion; use `s.c_str()` or `s.data()`.                          |
+| **Removing const from C‑string view**            |          |                                                                                 |
+| `char* p = s.c_str();`                           |     ❌    | `c_str()` returns `const char*`; dropping `const` is ill‑formed.                |
+| **Nullptr and literals**                         |          |                                                                                 |
+| `std::string s = nullptr;`                       |     ❌    | No constructor from `nullptr_t`; ambiguous with `const char*`.                  |
+| **Partial‑buffer initialization**                |          |                                                                                 |
+| `std::string s(buf, len);`                       |     ✅    | Constructs from the first `len` chars of `buf` (no `'\0'` needed).              |
+| **Substring construction**                       |          |                                                                                 |
+| `std::string t(s, pos, count);`                  |     ✅    | Copies `count` chars of `s` starting at `pos`.                                  |
