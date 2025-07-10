@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <iostream>
 #include <string>
 
@@ -14,13 +15,17 @@ int main(void) {
     // method 2 using append
     std::cout << greeting.append(" " + firstName + lastName) << std::endl;
                                 //^-------- a whole string
+    /* Hello! C++
+     * Hello! C++ */
 
     // string length can use either length or size
     // size is an alias of length
     std::string result = greeting.append(" I'm learning " + firstName + lastName);
     std::cout << "The length() of \"" << result + "\" is " << result.length() << std::endl;
     std::cout << "The size() of \"" << result + "\" is " << result.size() << std::endl;
-
+    /* The length() of "Hello! C++ I'm learning C++" is 27 (we did greeting.append() hence previous string is present)
+     * The size() of "Hello! C++ I'm learning C++" is 27
+     */
 
     // accessing string elements
     std::cout << "element 0: " << greeting[0] << " element 1: " << greeting[1] << std::endl;
@@ -28,6 +33,10 @@ int main(void) {
     std::cout << "element 2: " << greeting.at(2) << " element 3: " << greeting.at(3) << std::endl;
     // last character, will be + due to above statements
     std::cout << "Last element : " << greeting.at(greeting.length() - 1) << std::endl;
+    /* element 0: H element 1: e
+     * element 2: l element 3: l
+     * Last element : +
+     */
 
     // user input, uncomment what is required to execute
     std::string userName;

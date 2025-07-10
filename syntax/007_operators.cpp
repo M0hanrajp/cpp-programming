@@ -10,7 +10,7 @@ int main(void) {
          << a * b << "\n"
          << a - b << "\n"
          << a / b << "\n"
-         << a++   << "\n" // 6
+         << a++   << "\n" // prints 5 to stdout, becomes 6 later
          << --b   << "\n" // 4
          << a % b << "\n";
     // assignment operators
