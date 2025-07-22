@@ -1,6 +1,5 @@
 // A program to check if you are old enough to vote
 #include <iostream>
-#include <ostream>
 
 int main(void) {
     int requiredAge = 18;
