@@ -12,11 +12,14 @@
 class calculatorDemo { // class
     public: // access specifier
         int operandA;
-        int operandB;
+        int operandB; // both operands are not necssary
         int addTwoNumbers(int *a, int *b) { // Method defined inside class
             return *a + *b;
         }
         int multiplyTwoNumbers(int *a, int *b); // Method/function declaration
+        int sub(int a, int b) {
+            return a - b;
+        }
 };
 
 // To define a function outside the class definition, you have to declare it inside 
@@ -37,5 +40,8 @@ int main(void) {
     multiplyNumbers.operandA = 8;
     multiplyNumbers.operandB = 8;
     std::cout << "Multiplication :: " << addNumbers.multiplyTwoNumbers(&multiplyNumbers.operandA, &multiplyNumbers.operandB) << std::endl;
+    // without using operandA variable
+    calculatorDemo subtractNumbers;
+    std::cout << "sub :: " << subtractNumbers.sub(8, 16) << std::endl;
     return 0;
 }
